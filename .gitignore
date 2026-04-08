@@ -1,0 +1,37 @@
+# Dependências
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.production
+
+# Build
+dist/
+build/
+*.log
+
+# Docker
+*.pid
+*.seed
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Banco de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal

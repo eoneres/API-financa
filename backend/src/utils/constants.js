@@ -1,0 +1,25 @@
+// Constantes para validação
+const TRANSACTION_TYPES = {
+    INCOME: 'INCOME',
+    EXPENSE: 'EXPENSE'
+};
+
+const CATEGORIES = {
+    FOOD: 'FOOD',
+    TRANSPORT: 'TRANSPORT',
+    LEISURE: 'LEISURE',
+    HEALTH: 'HEALTH',
+    EDUCATION: 'EDUCATION',
+    BILLS: 'BILLS',
+    OTHER: 'OTHER'
+};
+
+const VALID_TRANSACTION_TYPES = Object.values(TRANSACTION_TYPES);
+const VALID_CATEGORIES = Object.values(CATEGORIES);
+
+module.exports = {
+    TRANSACTION_TYPES,
+    CATEGORIES,
+    VALID_TRANSACTION_TYPES,
+    VALID_CATEGORIES
+};

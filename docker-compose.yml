@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: finance-postgres
+    environment:
+      POSTGRES_USER: fin_user
+      POSTGRES_PASSWORD: fin_pass
+      POSTGRES_DB: fin_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - finance_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U fin_user -d fin_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: finance-backend
+    ports:
+      - "8081:3001"
+    environment:
+      - DATABASE_URL=postgresql://fin_user:fin_pass@postgres:5432/fin_db
+      - JWT_SECRET=super-secret-jwt-key-change-in-production
+      - JWT_EXPIRES_IN=7d
+      - NODE_ENV=development
+      - PORT=3001
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - finance_network
+
+  frontend:
+    build: ./frontend
+    container_name: finance-frontend
+    ports:
+      - "8080:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8081/api
+    depends_on:
+      - backend
+    networks:
+      - finance_network
+
+volumes:
+  postgres_data:
+
+
+networks:
+  finance_network:
+    driver: bridge

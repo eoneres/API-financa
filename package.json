@@ -1,0 +1,33 @@
+{
+    "name": "finance-control-api",
+    "version": "1.0.0",
+    "description": "API de Controle Financeiro Pessoal",
+    "private": true,
+    "workspaces": [
+        "backend",
+        "frontend"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+        "dev:backend": "cd backend && npm run dev",
+        "dev:frontend": "cd frontend && npm run dev",
+        "setup": "npm run setup:backend && npm run setup:frontend",
+        "setup:backend": "cd backend && npm install",
+        "setup:frontend": "cd frontend && npm install",
+        "docker:up": "docker-compose up -d",
+        "docker:down": "docker-compose down",
+        "docker:build": "docker-compose build",
+        "docker:logs": "docker-compose logs -f",
+        "test": "cd backend && npm test",
+        "prisma:generate": "cd backend && npm run prisma:generate",
+        "prisma:migrate": "cd backend && npm run prisma:migrate",
+        "prisma:studio": "cd backend && npm run prisma:studio",
+        "prisma:seed": "cd backend && npm run prisma:seed"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}

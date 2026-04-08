@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-[#05050a] text-gray-100 font-sans antialiased;
+    }
+
+    * {
+        @apply border-[#2a1d44]/30;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-[#0a0a14]/80 backdrop-blur-sm border border-[#2a1d44]/50 rounded-2xl shadow-xl;
+    }
+
+    .btn-primary {
+        @apply px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold hover:from-purple-500 hover:to-purple-600 transition-all duration-300;
+    }
+
+    .input-modern {
+        @apply w-full px-4 py-2.5 bg-[#121226] border border-purple-800 rounded-xl text-gray-100 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+    }
+}
